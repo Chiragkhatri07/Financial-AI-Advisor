@@ -653,7 +653,7 @@ def main():
         return st.session_state.admin_password == st.secrets.get("ADMIN_PASSWORD", "admin123")
 
     with st.sidebar:
-        st.title("Financial AI Agent")
+        st.title("Financial AI Advisor")
         if is_admin():
             st.success("Admin Mode Active")
             admin_functions()
@@ -682,7 +682,7 @@ def main():
         if st.button("Update Dashboard"):
             st.rerun()
 
-    st.title("📊 Financial AI Agent Pro")
+    st.title("📊 Financial AI Advisor Pro")
     st.caption("Comprehensive Market Insights Powered by Generative AI")
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
@@ -963,7 +963,7 @@ def main():
 
     st.divider()
     st.caption(f"""
-        Financial AI Agent Pro | University Project | 
+        Financial AI Advisor    | University oroject | 
         Last Updated: {datetime.now().strftime("%Y-%m-%d")}
     """)
 
