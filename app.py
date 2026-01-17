@@ -642,7 +642,7 @@ STOCK_LIST = {
 
 def main():
     st.set_page_config(
-        page_title="Financial AI Agent Pro",
+        page_title="Financial AI Advisor Pro",
         page_icon="📈",
         layout="wide",
         initial_sidebar_state="expanded"
