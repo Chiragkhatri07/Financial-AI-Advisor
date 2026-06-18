@@ -300,6 +300,48 @@ STOCK_LIST = {
     "🏗️ JSW Steel (JSWSTEEL.NS)":    "JSWSTEEL.NS",
 }
 
+STOCK_DOMAINS = {
+    "AAPL": "apple.com",
+    "MSFT": "microsoft.com",
+    "GOOGL": "google.com",
+    "AMZN": "amazon.com",
+    "META": "meta.com",
+    "TSLA": "tesla.com",
+    "NVDA": "nvidia.com",
+    "NFLX": "netflix.com",
+    "RELIANCE.NS": "relianceindustries.com",
+    "TCS.NS": "tcs.com",
+    "HDFCBANK.NS": "hdfcbank.com",
+    "INFY.NS": "infosys.com",
+    "ICICIBANK.NS": "icicibank.com",
+    "BAJFINANCE.NS": "bajajfinserv.in",
+    "ASIANPAINT.NS": "asianpaints.com",
+    "BHARTIARTL.NS": "airtel.in",
+    "SBIN.NS": "sbi.co.in",
+    "LICI.NS": "licindia.in",
+    "ITC.NS": "itcportal.com",
+    "HINDUNILVR.NS": "hul.co.in",
+    "LT.NS": "larsentoubro.com",
+    "TATASTEEL.NS": "tatasteel.com",
+    "TATAMOTORS.NS": "tatamotors.com",
+    "HCLTECH.NS": "hcltech.com",
+    "AXISBANK.NS": "axisbank.com",
+    "MARUTI.NS": "marutisuzuki.com",
+    "SUNPHARMA.NS": "sunpharma.com",
+    "KOTAKBANK.NS": "kotak.com",
+    "NTPC.NS": "ntpc.co.in",
+    "ONGC.NS": "ongcindia.com",
+    "ADANIENT.NS": "adanienterprises.com",
+    "COALINDIA.NS": "coalindia.in",
+    "POWERGRID.NS": "powergrid.in",
+    "M&M.NS": "mahindra.com",
+    "TITAN.NS": "titancompany.in",
+    "ULTRACEMCO.NS": "ultratechcement.com",
+    "WIPRO.NS": "wipro.com",
+    "JSWSTEEL.NS": "jsw.in",
+}
+
+
 FUND_DATA = {
     "Large Cap": [
         {"name": "ICICI Prudential Bluechip Fund", "returns": 12.5, "risk": "Low",       "allocation": 30},
@@ -1311,12 +1353,17 @@ def main():
             cols = st.columns(min(len(selected_stocks), 4))
             for i, (sym, rt) in enumerate(zip(selected_stocks, rt_results)):
                 ccy = "₹" if ".NS" in sym else "$"
+                domain = STOCK_DOMAINS.get(sym, "")
+                logo_html = f'<img src="https://logo.clearbit.com/{domain}" onerror="this.style.display=\'none\'" style="width:28px;height:28px;border-radius:4px;background:#fff;padding:2px;">' if domain else ''
                 with cols[i % 4]:
                     color = "var(--accent-teal)" if rt["change"] >= 0 else "var(--accent-red)"
                     arrow = "▲" if rt["change"] >= 0 else "▼"
                     st.markdown(f"""
                     <div class="stock-card">
-                        <div class="section-label">{sym}</div>
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
+                            <div class="section-label" style="margin:0;">{sym}</div>
+                            {logo_html}
+                        </div>
                         <div style="font-family:var(--font-mono);font-size:1.6rem;color:var(--text-primary);">
                             {ccy}{rt['price']:,.2f}
                         </div>
