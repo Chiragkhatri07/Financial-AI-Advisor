@@ -298,6 +298,10 @@ STOCK_LIST = {
     "UltraTech Cement":              "ULTRACEMCO.NS",
     "Wipro":                         "WIPRO.NS",
     "JSW Steel":                     "JSWSTEEL.NS",
+    
+    # Commodities
+    "Gold":                          "GC=F",
+    "Silver":                        "SI=F",
 }
 
 
@@ -366,6 +370,9 @@ COMPANY_NAMES = {
     "ASIANPAINT.NS": "Asian Paints",
     "WIPRO.NS": "Wipro",
     "JSWSTEEL.NS": "JSW Steel",
+    # Commodities
+    "GC=F": "Gold",
+    "SI=F": "Silver",
 }
 
 RISK_RETURN = {"Low": 0.10, "Medium": 0.12, "High": 0.15}
