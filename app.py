@@ -258,87 +258,46 @@ vader = get_vader()
 # ─────────────────────────────────────────────────────────────────────────────
 STOCK_LIST = {
     # US Stocks
-    "🍎 Apple (AAPL)":              "AAPL",
-    "🪟 Microsoft (MSFT)":          "MSFT",
-    "🔍 Alphabet (GOOGL)":          "GOOGL",
-    "📦 Amazon (AMZN)":             "AMZN",
-    "👤 Meta (META)":               "META",
-    "⚡ Tesla (TSLA)":              "TSLA",
-    "🟢 NVIDIA (NVDA)":             "NVDA",
-    "🎬 Netflix (NFLX)":            "NFLX",
+    "Apple Inc":                     "AAPL",
+    "Microsoft Corporation":         "MSFT",
+    "Alphabet Inc (Google)":         "GOOGL",
+    "Amazon.com Inc":                "AMZN",
+    "Meta Platforms":                "META",
+    "Tesla Inc":                     "TSLA",
+    "NVIDIA Corporation":            "NVDA",
+    "Netflix Inc":                   "NFLX",
     
     # Indian Stocks
-    "🛢️ Reliance (RELIANCE.NS)":     "RELIANCE.NS",
-    "💻 TCS (TCS.NS)":              "TCS.NS",
-    "🏦 HDFC Bank (HDFCBANK.NS)":   "HDFCBANK.NS",
-    "🔷 Infosys (INFY.NS)":         "INFY.NS",
-    "🏦 ICICI Bank (ICICIBANK.NS)": "ICICIBANK.NS",
-    "📈 Bajaj Finance (BAJFINANCE.NS)": "BAJFINANCE.NS",
-    "🎨 Asian Paints (ASIANPAINT.NS)":  "ASIANPAINT.NS",
-    "📱 Bharti Airtel (BHARTIARTL.NS)": "BHARTIARTL.NS",
-    "🏦 SBI (SBIN.NS)":              "SBIN.NS",
-    "🏥 LIC (LICI.NS)":              "LICI.NS",
-    "🚬 ITC (ITC.NS)":              "ITC.NS",
-    "🧼 HUL (HINDUNILVR.NS)":        "HINDUNILVR.NS",
-    "🏗️ L&T (LT.NS)":               "LT.NS",
-    "🔩 Tata Steel (TATASTEEL.NS)":   "TATASTEEL.NS",
-    "🚗 Tata Motors (TATAMOTORS.NS)":  "TATAMOTORS.NS",
-    "🖥️ HCL Tech (HCLTECH.NS)":      "HCLTECH.NS",
-    "🏦 Axis Bank (AXISBANK.NS)":    "AXISBANK.NS",
-    "🚘 Maruti Suzuki (MARUTI.NS)":  "MARUTI.NS",
-    "💊 Sun Pharma (SUNPHARMA.NS)":  "SUNPHARMA.NS",
-    "🏦 Kotak Mahindra (KOTAKBANK.NS)": "KOTAKBANK.NS",
-    "⚡ NTPC (NTPC.NS)":             "NTPC.NS",
-    "🔥 ONGC (ONGC.NS)":             "ONGC.NS",
-    "🌟 Adani Ent (ADANIENT.NS)":    "ADANIENT.NS",
-    "🪨 Coal India (COALINDIA.NS)":  "COALINDIA.NS",
-    "⚡ Power Grid (POWERGRID.NS)":  "POWERGRID.NS",
-    "🚜 M&M (M&M.NS)":               "M&M.NS",
-    "💎 Titan (TITAN.NS)":           "TITAN.NS",
-    "🧱 UltraTech Cement (ULTRACEMCO.NS)": "ULTRACEMCO.NS",
-    "💻 Wipro (WIPRO.NS)":           "WIPRO.NS",
-    "🏗️ JSW Steel (JSWSTEEL.NS)":    "JSWSTEEL.NS",
-}
-
-STOCK_DOMAINS = {
-    "AAPL": "apple.com",
-    "MSFT": "microsoft.com",
-    "GOOGL": "google.com",
-    "AMZN": "amazon.com",
-    "META": "meta.com",
-    "TSLA": "tesla.com",
-    "NVDA": "nvidia.com",
-    "NFLX": "netflix.com",
-    "RELIANCE.NS": "relianceindustries.com",
-    "TCS.NS": "tcs.com",
-    "HDFCBANK.NS": "hdfcbank.com",
-    "INFY.NS": "infosys.com",
-    "ICICIBANK.NS": "icicibank.com",
-    "BAJFINANCE.NS": "bajajfinserv.in",
-    "ASIANPAINT.NS": "asianpaints.com",
-    "BHARTIARTL.NS": "airtel.in",
-    "SBIN.NS": "sbi.co.in",
-    "LICI.NS": "licindia.in",
-    "ITC.NS": "itcportal.com",
-    "HINDUNILVR.NS": "hul.co.in",
-    "LT.NS": "larsentoubro.com",
-    "TATASTEEL.NS": "tatasteel.com",
-    "TATAMOTORS.NS": "tatamotors.com",
-    "HCLTECH.NS": "hcltech.com",
-    "AXISBANK.NS": "axisbank.com",
-    "MARUTI.NS": "marutisuzuki.com",
-    "SUNPHARMA.NS": "sunpharma.com",
-    "KOTAKBANK.NS": "kotak.com",
-    "NTPC.NS": "ntpc.co.in",
-    "ONGC.NS": "ongcindia.com",
-    "ADANIENT.NS": "adanienterprises.com",
-    "COALINDIA.NS": "coalindia.in",
-    "POWERGRID.NS": "powergrid.in",
-    "M&M.NS": "mahindra.com",
-    "TITAN.NS": "titancompany.in",
-    "ULTRACEMCO.NS": "ultratechcement.com",
-    "WIPRO.NS": "wipro.com",
-    "JSWSTEEL.NS": "jsw.in",
+    "Reliance Industries":           "RELIANCE.NS",
+    "Tata Consultancy Services":     "TCS.NS",
+    "HDFC Bank":                     "HDFCBANK.NS",
+    "Infosys":                       "INFY.NS",
+    "ICICI Bank":                    "ICICIBANK.NS",
+    "Bajaj Finance":                 "BAJFINANCE.NS",
+    "Asian Paints":                  "ASIANPAINT.NS",
+    "Bharti Airtel":                 "BHARTIARTL.NS",
+    "State Bank of India":           "SBIN.NS",
+    "Life Insurance Corporation":    "LICI.NS",
+    "ITC Limited":                   "ITC.NS",
+    "Hindustan Unilever":            "HINDUNILVR.NS",
+    "Larsen & Toubro":               "LT.NS",
+    "Tata Steel":                    "TATASTEEL.NS",
+    "Tata Motors":                   "TATAMOTORS.NS",
+    "HCL Technologies":              "HCLTECH.NS",
+    "Axis Bank":                     "AXISBANK.NS",
+    "Maruti Suzuki":                 "MARUTI.NS",
+    "Sun Pharmaceutical":            "SUNPHARMA.NS",
+    "Kotak Mahindra Bank":           "KOTAKBANK.NS",
+    "NTPC Limited":                  "NTPC.NS",
+    "Oil and Natural Gas Corp":      "ONGC.NS",
+    "Adani Enterprises":             "ADANIENT.NS",
+    "Coal India":                    "COALINDIA.NS",
+    "Power Grid Corporation":        "POWERGRID.NS",
+    "Mahindra & Mahindra":           "M&M.NS",
+    "Titan Company":                 "TITAN.NS",
+    "UltraTech Cement":              "ULTRACEMCO.NS",
+    "Wipro":                         "WIPRO.NS",
+    "JSW Steel":                     "JSWSTEEL.NS",
 }
 
 
@@ -581,7 +540,7 @@ def get_historical_chart(symbol: str, period: str) -> go.Figure:
     fig.add_trace(go.Scatter(x=hist.index, y=hist["SMA_50"],
                              line=dict(color="#3b82f6", width=1.2), name="SMA 50"))
     fig.update_layout(
-        title=dict(text=f"{symbol} · Price History", font=dict(size=14, color="#e8edf4")),
+        title=dict(text=f"{COMPANY_NAMES.get(symbol, symbol)} · Price History", font=dict(size=14, color="#e8edf4")),
         xaxis_rangeslider_visible=False, hovermode="x unified", height=420,
         **PLOTLY_THEME,
     )
@@ -600,8 +559,9 @@ def compare_stocks(symbols: tuple, period: str):
         s, e = hist["Close"].iloc[0], hist["Close"].iloc[-1]
         ret  = (e - s) / s * 100
         vol  = hist["Close"].pct_change().std() * np.sqrt(252)
+        company_name = COMPANY_NAMES.get(symbol, symbol)
         metrics.append({
-            "Symbol":      symbol,
+            "Company":     company_name,
             "Start (₹/$)": round(s, 2),
             "End (₹/$)":   round(e, 2),
             "Return %":    round(ret, 2),
@@ -609,7 +569,7 @@ def compare_stocks(symbols: tuple, period: str):
             "Avg Vol":     f"{int(hist['Volume'].mean()):,}",
         })
         norm = hist["Close"] / hist["Close"].iloc[0] * 100
-        fig.add_trace(go.Scatter(x=hist.index, y=norm, name=symbol, mode="lines",
+        fig.add_trace(go.Scatter(x=hist.index, y=norm, name=company_name, mode="lines",
                                  line=dict(width=2)))
     fig.update_layout(
         title=dict(text="Normalised Performance (base 100)", font=dict(size=13, color="#e8edf4")),
@@ -620,8 +580,8 @@ def compare_stocks(symbols: tuple, period: str):
     # Guard against empty dataset or missing Symbol column
     if metrics:
         df = pd.DataFrame(metrics)
-        if "Symbol" in df.columns:
-            df = df.set_index("Symbol")
+        if "Company" in df.columns:
+            df = df.set_index("Company")
     else:
         df = pd.DataFrame()
 
@@ -1284,18 +1244,6 @@ def main():
         )
         selected_stocks = [STOCK_LIST[n] for n in selected_names]
 
-        # Render brand logos for selected stocks
-        if selected_stocks:
-            st.markdown(
-                '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:-8px;margin-bottom:12px;justify-content:flex-start;">' + 
-                ''.join(
-                    f'<div style="background:#fff;border-radius:4px;padding:3px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,0.15);" title="{sym}">'
-                    f'<img src="https://logo.clearbit.com/{STOCK_DOMAINS.get(sym, "")}" onerror="this.style.display=\'none\'" style="width:20px;height:20px;object-fit:contain;">'
-                    f'</div>' for sym in selected_stocks if STOCK_DOMAINS.get(sym, "")
-                ) + '</div>',
-                unsafe_allow_html=True
-            )
-
         st.session_state.risk_profile = st.select_slider(
             "⚖️ Risk Appetite",
             options=["Low", "Medium", "High"],
@@ -1365,17 +1313,13 @@ def main():
             cols = st.columns(min(len(selected_stocks), 4))
             for i, (sym, rt) in enumerate(zip(selected_stocks, rt_results)):
                 ccy = "₹" if ".NS" in sym else "$"
-                domain = STOCK_DOMAINS.get(sym, "")
-                logo_html = f'<img src="https://logo.clearbit.com/{domain}" onerror="this.style.display=\'none\'" style="width:28px;height:28px;border-radius:4px;background:#fff;padding:2px;">' if domain else ''
+                company_name = COMPANY_NAMES.get(sym, sym)
                 with cols[i % 4]:
                     color = "var(--accent-teal)" if rt["change"] >= 0 else "var(--accent-red)"
                     arrow = "▲" if rt["change"] >= 0 else "▼"
                     st.markdown(f"""
                     <div class="stock-card">
-                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;">
-                            <div class="section-label" style="margin:0;">{sym}</div>
-                            {logo_html}
-                        </div>
+                        <div class="section-label" style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;" title="{company_name}">{company_name}</div>
                         <div style="font-family:var(--font-mono);font-size:1.6rem;color:var(--text-primary);">
                             {ccy}{rt['price']:,.2f}
                         </div>
@@ -1389,7 +1333,7 @@ def main():
 
             st.markdown("---")
             for sym in selected_stocks:
-                st.markdown(f"#### {sym} — Price Chart")
+                st.markdown(f"#### {COMPANY_NAMES.get(sym, sym)} — Price Chart")
                 fig = get_historical_chart(sym, analysis_period)
                 st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
@@ -1402,7 +1346,7 @@ def main():
         else:
             st.markdown("### 📰 News Sentiment Analysis")
             for sym in selected_stocks:
-                with st.expander(f"Sentiment — {sym}", expanded=(sym == selected_stocks[0])):
+                with st.expander(f"Sentiment — {COMPANY_NAMES.get(sym, sym)}", expanded=(sym == selected_stocks[0])):
                     with st.spinner(f"Fetching sentiment for {sym}…"):
                         sent = analyze_news_sentiment(sym)
 
@@ -1627,10 +1571,8 @@ def main():
                 pnl_usd = value_usd - cost_usd
                 pnl_pct = (pnl_usd / cost_usd * 100) if cost_usd > 0 else 0.0
                 ccy = "₹" if symbol.endswith(".NS") else "$"
-                logo_domain = STOCK_DOMAINS.get(symbol, "")
                 holdings_rows.append({
-                    "Logo":                f"https://logo.clearbit.com/{logo_domain}" if logo_domain else None,
-                    "Symbol":              symbol,
+                    "Company":             COMPANY_NAMES.get(symbol, symbol),
                     "Shares":              shares,
                     "Avg Buy Price":       f"{ccy}{buy_price:,.2f}",
                     "Current Price":       f"{ccy}{curr_price:,.2f}",
@@ -1664,7 +1606,7 @@ def main():
             col_chart1, col_chart2 = st.columns(2)
             with col_chart1:
                 fig_donut = go.Figure(go.Pie(
-                    labels=[r["Symbol"] for r in holdings_rows],
+                    labels=[r["Company"] for r in holdings_rows],
                     values=[r["Current Value (USD)"] for r in holdings_rows],
                     hole=0.4, hoverinfo="label+percent+value", textinfo="label+percent",
                     marker=dict(line=dict(color="#0e1620", width=2))
@@ -1676,10 +1618,10 @@ def main():
 
             with col_chart2:
                 fig_bar = go.Figure()
-                fig_bar.add_trace(go.Bar(x=[r["Symbol"] for r in holdings_rows],
+                fig_bar.add_trace(go.Bar(x=[r["Company"] for r in holdings_rows],
                                          y=[r["Total Cost (USD)"] for r in holdings_rows],
                                          name="Invested Cost", marker_color="#3b82f6"))
-                fig_bar.add_trace(go.Bar(x=[r["Symbol"] for r in holdings_rows],
+                fig_bar.add_trace(go.Bar(x=[r["Company"] for r in holdings_rows],
                                          y=[r["Current Value (USD)"] for r in holdings_rows],
                                          name="Current Value", marker_color="#0fd4b0"))
                 fig_bar.update_layout(
@@ -1691,13 +1633,7 @@ def main():
 
             # ── Holdings Table ───────────────────────────────────────────────
             st.markdown("#### 📂 Current Holdings")
-            st.dataframe(
-                pd.DataFrame(holdings_rows).set_index("Symbol"),
-                column_config={
-                    "Logo": st.column_config.ImageColumn("Logo", width="small")
-                },
-                use_container_width=True
-            )
+            st.dataframe(pd.DataFrame(holdings_rows).set_index("Company"), use_container_width=True)
 
             st.markdown("---")
 
