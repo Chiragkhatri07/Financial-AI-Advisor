@@ -1263,6 +1263,12 @@ def main():
             index=4,
         )
 
+        display_currency = st.selectbox(
+            "💵 Display Currency",
+            options=["USD ($)", "INR (₹)"],
+            index=0,
+        )
+
         st.markdown("---")
 
         with st.expander("🎙️ Voice Settings"):
@@ -1317,9 +1323,27 @@ def main():
             with concurrent.futures.ThreadPoolExecutor() as ex:
                 rt_results = list(ex.map(get_realtime_stock_data, selected_stocks))
 
+            # Fetch live USD/INR rate for on-the-fly currency conversion
+            live_rate = get_fx_rate("USD", "INR")
+            usd_inr = live_rate if live_rate > 0 else 83.50
+
             cols = st.columns(min(len(selected_stocks), 4))
             for i, (sym, rt) in enumerate(zip(selected_stocks, rt_results)):
-                ccy = "₹" if ".NS" in sym else "$"
+                raw_price = rt["price"]
+                # Determine display price and currency symbol based on sidebar selection
+                if display_currency == "INR (₹)":
+                    ccy_symbol = "₹"
+                    if not sym.endswith(".NS"):
+                        price_val = raw_price * usd_inr
+                    else:
+                        price_val = raw_price
+                else:  # USD ($)
+                    ccy_symbol = "$"
+                    if sym.endswith(".NS"):
+                        price_val = raw_price / usd_inr
+                    else:
+                        price_val = raw_price
+
                 company_name = COMPANY_NAMES.get(sym, sym)
                 with cols[i % 4]:
                     color = "var(--accent-teal)" if rt["change"] >= 0 else "var(--accent-red)"
@@ -1328,7 +1352,7 @@ def main():
                     <div class="stock-card">
                         <div class="section-label" style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;" title="{company_name}">{company_name}</div>
                         <div style="font-family:var(--font-mono);font-size:1.6rem;color:var(--text-primary);">
-                            {ccy}{rt['price']:,.2f}
+                            {ccy_symbol}{price_val:,.2f}
                         </div>
                         <div style="color:{color};font-family:var(--font-mono);font-size:.88rem;margin-top:.2rem;">
                             {arrow} {rt['change']:+.2f}%
