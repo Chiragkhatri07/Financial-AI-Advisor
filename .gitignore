@@ -1,0 +1,29 @@
+# Streamlit secrets (crucial for security)
+.streamlit/secrets.toml
+
+# Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environment binaries/scripts
+# Since the repo is initialized in finenv/Scripts, we ignore all executables, scripts, and links.
+*.exe
+*.dll
+*.bat
+*.ps1
+*.fish
+*.cmd
+# Specifically ignore virtual environment shell scripts with no extension
+activate
+deactivate
+jsondiff
+jsonpatch
+jsonpointer
+# Also ignore any build/dist directories or local logs
+*.log
+pwiz.py
+
