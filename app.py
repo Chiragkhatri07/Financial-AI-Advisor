@@ -257,6 +257,7 @@ vader = get_vader()
 # STATIC DATA
 # ─────────────────────────────────────────────────────────────────────────────
 STOCK_LIST = {
+    # US Stocks
     "🍎 Apple (AAPL)":              "AAPL",
     "🪟 Microsoft (MSFT)":          "MSFT",
     "🔍 Alphabet (GOOGL)":          "GOOGL",
@@ -265,13 +266,38 @@ STOCK_LIST = {
     "⚡ Tesla (TSLA)":              "TSLA",
     "🟢 NVIDIA (NVDA)":             "NVDA",
     "🎬 Netflix (NFLX)":            "NFLX",
-    "🛢  Reliance (RELIANCE.NS)":   "RELIANCE.NS",
+    
+    # Indian Stocks
+    "🛢️ Reliance (RELIANCE.NS)":     "RELIANCE.NS",
     "💻 TCS (TCS.NS)":              "TCS.NS",
     "🏦 HDFC Bank (HDFCBANK.NS)":   "HDFCBANK.NS",
     "🔷 Infosys (INFY.NS)":         "INFY.NS",
     "🏦 ICICI Bank (ICICIBANK.NS)": "ICICIBANK.NS",
     "📈 Bajaj Finance (BAJFINANCE.NS)": "BAJFINANCE.NS",
     "🎨 Asian Paints (ASIANPAINT.NS)":  "ASIANPAINT.NS",
+    "📱 Bharti Airtel (BHARTIARTL.NS)": "BHARTIARTL.NS",
+    "🏦 SBI (SBIN.NS)":              "SBIN.NS",
+    "🏥 LIC (LICI.NS)":              "LICI.NS",
+    "🚬 ITC (ITC.NS)":              "ITC.NS",
+    "🧼 HUL (HINDUNILVR.NS)":        "HINDUNILVR.NS",
+    "🏗️ L&T (LT.NS)":               "LT.NS",
+    "🔩 Tata Steel (TATASTEEL.NS)":   "TATASTEEL.NS",
+    "🚗 Tata Motors (TATAMOTORS.NS)":  "TATAMOTORS.NS",
+    "🖥️ HCL Tech (HCLTECH.NS)":      "HCLTECH.NS",
+    "🏦 Axis Bank (AXISBANK.NS)":    "AXISBANK.NS",
+    "🚘 Maruti Suzuki (MARUTI.NS)":  "MARUTI.NS",
+    "💊 Sun Pharma (SUNPHARMA.NS)":  "SUNPHARMA.NS",
+    "🏦 Kotak Mahindra (KOTAKBANK.NS)": "KOTAKBANK.NS",
+    "⚡ NTPC (NTPC.NS)":             "NTPC.NS",
+    "🔥 ONGC (ONGC.NS)":             "ONGC.NS",
+    "🌟 Adani Ent (ADANIENT.NS)":    "ADANIENT.NS",
+    "🪨 Coal India (COALINDIA.NS)":  "COALINDIA.NS",
+    "⚡ Power Grid (POWERGRID.NS)":  "POWERGRID.NS",
+    "🚜 M&M (M&M.NS)":               "M&M.NS",
+    "💎 Titan (TITAN.NS)":           "TITAN.NS",
+    "🧱 UltraTech Cement (ULTRACEMCO.NS)": "ULTRACEMCO.NS",
+    "💻 Wipro (WIPRO.NS)":           "WIPRO.NS",
+    "🏗️ JSW Steel (JSWSTEEL.NS)":    "JSWSTEEL.NS",
 }
 
 FUND_DATA = {
@@ -303,10 +329,42 @@ PERIOD_MAP = {
 }
 
 COMPANY_NAMES = {
+    # US
     "AAPL": "Apple Inc",   "MSFT": "Microsoft",
     "GOOGL": "Alphabet",   "TSLA": "Tesla Inc",
     "AMZN": "Amazon",      "NVDA": "NVIDIA",
     "META": "Meta Platforms",
+    # Indian
+    "RELIANCE.NS": "Reliance Industries",
+    "TCS.NS": "Tata Consultancy Services",
+    "HDFCBANK.NS": "HDFC Bank",
+    "INFY.NS": "Infosys",
+    "ICICIBANK.NS": "ICICI Bank",
+    "BHARTIARTL.NS": "Bharti Airtel",
+    "SBIN.NS": "State Bank of India",
+    "LICI.NS": "Life Insurance Corporation of India",
+    "ITC.NS": "ITC Limited",
+    "HINDUNILVR.NS": "Hindustan Unilever",
+    "LT.NS": "Larsen & Toubro",
+    "BAJFINANCE.NS": "Bajaj Finance",
+    "TATASTEEL.NS": "Tata Steel",
+    "TATAMOTORS.NS": "Tata Motors",
+    "HCLTECH.NS": "HCL Technologies",
+    "AXISBANK.NS": "Axis Bank",
+    "MARUTI.NS": "Maruti Suzuki",
+    "SUNPHARMA.NS": "Sun Pharmaceutical",
+    "KOTAKBANK.NS": "Kotak Mahindra Bank",
+    "NTPC.NS": "NTPC Limited",
+    "ONGC.NS": "ONGC India",
+    "ADANIENT.NS": "Adani Enterprises",
+    "COALINDIA.NS": "Coal India",
+    "POWERGRID.NS": "Power Grid Corporation",
+    "M&M.NS": "Mahindra & Mahindra",
+    "TITAN.NS": "Titan Company",
+    "ULTRACEMCO.NS": "UltraTech Cement",
+    "ASIANPAINT.NS": "Asian Paints",
+    "WIPRO.NS": "Wipro",
+    "JSWSTEEL.NS": "JSW Steel",
 }
 
 RISK_RETURN = {"Low": 0.10, "Medium": 0.12, "High": 0.15}
@@ -2196,7 +2254,7 @@ Now list all 5 funds completely:"""
                 speak_text(response)
             st.rerun()
 
-    # ── Footer ────────────────────────────────────────────────────────────────
+    # Footer 
     st.markdown("---")
     st.markdown(
         f"<div style='text-align:center;color:var(--text-dim);font-size:.72rem;'>"
