@@ -1284,6 +1284,18 @@ def main():
         )
         selected_stocks = [STOCK_LIST[n] for n in selected_names]
 
+        # Render brand logos for selected stocks
+        if selected_stocks:
+            st.markdown(
+                '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:-8px;margin-bottom:12px;justify-content:flex-start;">' + 
+                ''.join(
+                    f'<div style="background:#fff;border-radius:4px;padding:3px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,0.15);" title="{sym}">'
+                    f'<img src="https://logo.clearbit.com/{STOCK_DOMAINS.get(sym, "")}" onerror="this.style.display=\'none\'" style="width:20px;height:20px;object-fit:contain;">'
+                    f'</div>' for sym in selected_stocks if STOCK_DOMAINS.get(sym, "")
+                ) + '</div>',
+                unsafe_allow_html=True
+            )
+
         st.session_state.risk_profile = st.select_slider(
             "⚖️ Risk Appetite",
             options=["Low", "Medium", "High"],
@@ -1615,7 +1627,9 @@ def main():
                 pnl_usd = value_usd - cost_usd
                 pnl_pct = (pnl_usd / cost_usd * 100) if cost_usd > 0 else 0.0
                 ccy = "₹" if symbol.endswith(".NS") else "$"
+                logo_domain = STOCK_DOMAINS.get(symbol, "")
                 holdings_rows.append({
+                    "Logo":                f"https://logo.clearbit.com/{logo_domain}" if logo_domain else None,
                     "Symbol":              symbol,
                     "Shares":              shares,
                     "Avg Buy Price":       f"{ccy}{buy_price:,.2f}",
@@ -1677,7 +1691,13 @@ def main():
 
             # ── Holdings Table ───────────────────────────────────────────────
             st.markdown("#### 📂 Current Holdings")
-            st.dataframe(pd.DataFrame(holdings_rows).set_index("Symbol"), use_container_width=True)
+            st.dataframe(
+                pd.DataFrame(holdings_rows).set_index("Symbol"),
+                column_config={
+                    "Logo": st.column_config.ImageColumn("Logo", width="small")
+                },
+                use_container_width=True
+            )
 
             st.markdown("---")
 
