@@ -333,7 +333,6 @@ def init_session():
 
 # ─────────────────────────────────────────────────────────────────────────────
 # GEMINI HELPERS
-# FIX 2: get_available_model is cached correctly; WORKING_MODEL lazily initialised
 # ─────────────────────────────────────────────────────────────────────────────
 @st.cache_resource
 def get_available_model() -> Optional[str]:
@@ -377,7 +376,7 @@ def get_available_model() -> Optional[str]:
 def gemini_generate(prompt: str, max_tokens: int = 1024,
                     system_instruction: Optional[str] = None,
                     _retry: bool = False) -> str:
-    # FIX 3: added _retry guard to prevent infinite recursion on error
+    # Retry flag prevents infinite recursion if API fails
     if not GEMINI_AVAILABLE:
         return "⚠️ google-generativeai not installed. Run: pip install google-generativeai"
     if not GEMINI_API_KEY:
@@ -400,7 +399,7 @@ def gemini_generate(prompt: str, max_tokens: int = 1024,
         return response.text
 
     except Exception as e:
-        # FIX 3 cont.: only retry once; clear cache so get_available_model re-probes
+        # Clear cache and retry once to allow model re-probing
         if not _retry:
             st.cache_resource.clear()
             # Re-initialise singletons that were cleared
@@ -518,7 +517,7 @@ def compare_stocks(symbols: tuple, period: str):
         **PLOTLY_THEME,
     )
 
-    # FIX 4: guard against empty / missing Symbol column before set_index
+    # Guard against empty dataset or missing Symbol column
     if metrics:
         df = pd.DataFrame(metrics)
         if "Symbol" in df.columns:
@@ -716,7 +715,6 @@ def get_investment_recommendations(risk: str) -> dict:
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TTS
-# FIX 5: read audio bytes before unlinking the temp file (cross-platform safety)
 # ─────────────────────────────────────────────────────────────────────────────
 def speak_text(text: str):
     if not text:
@@ -729,7 +727,7 @@ def speak_text(text: str):
         with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as f:
             tmp_path = f.name
         tts.save(tmp_path)
-        with open(tmp_path, "rb") as f:   # FIX 5: read BEFORE unlink
+        with open(tmp_path, "rb") as f:   # Read file contents before deleting
             audio = f.read()
         os.unlink(tmp_path)
         st.audio(audio, format="audio/mp3")
@@ -739,7 +737,6 @@ def speak_text(text: str):
 
 # ─────────────────────────────────────────────────────────────────────────────
 # STT
-# FIX 1 cont.: return type annotation uses Optional[str] instead of str | None
 # ─────────────────────────────────────────────────────────────────────────────
 def listen_for_speech(timeout: int = 10) -> Optional[str]:
     if not SPEECH_AVAILABLE:
@@ -774,8 +771,6 @@ def listen_for_speech(timeout: int = 10) -> Optional[str]:
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADMIN PANEL
-# FIX 6: admin_panel() must render in main content area, NOT inside sidebar,
-#         because st.tabs() is not allowed inside st.sidebar.
 # ─────────────────────────────────────────────────────────────────────────────
 def admin_panel():
     st.markdown("### 🛡️ Administrator Panel")
@@ -1166,7 +1161,7 @@ def main():
         else:
             st.error("❌ No working Gemini model. Check your API key.")
 
-        # FIX 6: only show admin login in sidebar; panel renders in main area below
+        # Render login form in the sidebar
         def is_admin() -> bool:
             try:
                 admin_pw = st.secrets.get("ADMIN_PASSWORD", os.getenv("ADMIN_PASSWORD", "admin123"))
@@ -1217,7 +1212,7 @@ def main():
             st.cache_data.clear()
             st.rerun()
 
-    # FIX 6: Admin panel rendered OUTSIDE sidebar so st.tabs() works correctly
+    # Render the admin panel in the main content area (st.tabs is unsupported in sidebar)
     if is_admin():
         admin_panel()
         st.markdown("---")
@@ -1877,7 +1872,7 @@ Now list all 5 funds completely:"""
         st.markdown("---")
         st.markdown("#### 💬 Ask the SIP Assistant")
 
-        # FIX 7: capture input value before the form clears it on submit
+        # Capture input value before form clearing on submit
         with st.form("sip_form", clear_on_submit=True):
             sip_q    = st.text_input("Question", placeholder="Which SIP is best for 7 years?")
             sip_send = st.form_submit_button("Send")
